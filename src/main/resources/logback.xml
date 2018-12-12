@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="R" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/Users/wangligang1/httpclient/code_scan.log</file>
+        <encoder>
+            <pattern>
+                [%level] [%d{yyyy-MM-dd HH:mm:ss.SSS}][%X{traceId}] [%thread] [%X{userErp}] [%logger{36}:%line] %msg%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/Users/wangligang1/httpclient/code_scan.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!--<logger name="hu.netmind.beankeeper.service" level="error"/>-->
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="R" />
+    </root>
+
+
+
+</configuration>
